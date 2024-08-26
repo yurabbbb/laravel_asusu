@@ -25,11 +25,11 @@ Route::get('test', TestController::class)->name('test')->middleware(LogMiddlewar
 
 
 // CRUD 
-Route::redirect('/user', '/user/posts')->name('user');  // со страницы юзер на страницу юзер/посты
+//Route::redirect('/user', '/user/posts')->name('user');  // со страницы юзер на страницу юзер/посты
 
 Route::prefix('user')->middleware(/*'auth', */'active')->group(function(){
 
-
+    Route::redirect('/', '/user/posts')->name('user');
         // метод GET                       //это метод (action)  //это название маршрута, можно писать ->name('posts')
     Route::get('posts', [UserPostController::class, 'index'])->name('posts.index');
     Route::get('posts/create', [UserPostController::class, 'create'])->name('posts.create');
