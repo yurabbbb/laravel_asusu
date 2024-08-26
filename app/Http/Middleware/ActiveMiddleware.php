@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class LogMiddleware
+class ActiveMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,9 +15,17 @@ class LogMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // функция инфо записывает в логи
-        //info('Запрос', ['foo'=>'bar']);
-        info($request->url(), $request->all());
-        return $next($request);
+        //типа если пользователь активен (не забанен)
+
+        if ($this->isActive($request)){
+            return $next($request);
+        }
+        abort(403);
+
+        
+    }
+
+    protected function isActive(Request $request){
+            return true;
     }
 }

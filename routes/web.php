@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\User\PostController as UserPostController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\ActiveMiddleware;
 use App\Http\Middleware\LogMiddleware;
 
 Route::get('/', function () {
@@ -26,7 +27,7 @@ Route::get('test', TestController::class)->name('test')->middleware(LogMiddlewar
 // CRUD 
 Route::redirect('/user', '/user/posts')->name('user');  // со страницы юзер на страницу юзер/посты
 
-Route::prefix('user')->middleware('auth')->group(function(){
+Route::prefix('user')->middleware(/*'auth', */'active')->group(function(){
 
 
         // метод GET                       //это метод (action)  //это название маршрута, можно писать ->name('posts')

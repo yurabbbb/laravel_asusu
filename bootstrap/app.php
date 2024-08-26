@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\ActiveMiddleware;
 use App\Http\Middleware\LogMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -37,7 +38,9 @@ return Application::configure(basePath: dirname(__DIR__))
     
     ->withMiddleware(function (Middleware $middleware) {
         // глобальный стек middleware
-            $middleware->append(LogMiddleware::class); // добавить в конец списка
+            $middleware
+                ->append(LogMiddleware::class)   // добавить в конец списка
+                ->alias(['active' => ActiveMiddleware::class]);  // алиас для МиддлВэа
                 //prepend - добавить в начало списка
     })
     ->withExceptions(function (Exceptions $exceptions) {
