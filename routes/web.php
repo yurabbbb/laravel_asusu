@@ -24,8 +24,11 @@ Route::get('test', TestController::class)->name('test')->middleware(LogMiddlewar
 
 
 // CRUD 
+Route::redirect('/user', '/user/posts')->name('user');  // со страницы юзер на страницу юзер/посты
 
-Route::prefix('user')->group(function(){
+Route::prefix('user')->middleware('auth')->group(function(){
+
+
         // метод GET                       //это метод (action)  //это название маршрута, можно писать ->name('posts')
     Route::get('posts', [UserPostController::class, 'index'])->name('posts.index');
     Route::get('posts/create', [UserPostController::class, 'create'])->name('posts.create');
@@ -52,8 +55,8 @@ Route::resource('posts/{post}/comments', CommentController::class);
 Route::get('register', [RegisterController::class, 'index'])->name('register.index');
 Route::post('register', [RegisterController::class, 'store'])->name('register.store');
 
-Route::get('login', [LoginController::class, 'index'])->name('login');
-Route::post('login', [LoginController::class, 'store'])->name('login.store');
+Route::get('login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('login', [LoginController::class, 'store'])->name('login.store')->middleware('guest');
 
 Route::get('blog', [BlogController::class, 'index'])->name('blog');
 Route::get('blog/{post}', [BlogController::class, 'show'])->name('blog.show');
