@@ -7,9 +7,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PostController ;
 
 
-Route::redirect('/admin', '/admin/posts')->name('admin');
 
-Route::prefix('admin')->middleware('auth')->group(function(){
+
+Route::prefix('admin')->middleware('admin')->group(function(){
+
+    Route::redirect('/', '/admin/posts')->name('admin');
     // метод GET                       //это метод (action)  //это название маршрута, можно писать ->name('posts')
     Route::get('posts', [PostController::class, 'index'])->name('posts.index');
     Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
