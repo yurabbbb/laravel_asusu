@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\User\PostController as UserPostController;
 use App\Http\Controllers\UserController;
-use App\Http\Middleware\ActiveMiddleware;
 use App\Http\Middleware\LogMiddleware;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.index');
 });
+Route::redirect('/home', '/')->name('home');
 
 Route::get('users', [UserController::class, 'index'])->name('users.index');
 Route::get('users/create', [UserController::class, 'create'])->name('users.create');
@@ -53,7 +53,7 @@ Route::resource('posts/{post}/comments', CommentController::class);
 //можно не вложенный
 //Route::resource('comments', CommentController::class)     ->only(['index', 'show']);  ->except()
 
-Route::get('register', [RegisterController::class, 'index'])->name('register.index');
+Route::get('register', [RegisterController::class, 'index'])->name('register');
 Route::post('register', [RegisterController::class, 'store'])->name('register.store');
 
 Route::get('login', [LoginController::class, 'index'])->name('login')->middleware('guest');
