@@ -2,9 +2,17 @@
     <div class="container">
         <div class="d-flex justify-content-between">
             <div>
-                <a href="{{ route('home')}}">
-                    {{ config('app.name') }}
-                </a>   
+                <ul class="list-unstyled d-flex">
+                    <li class="ms-3">
+                        <a href="{{ route('home')}}">
+                        Главная
+                        </a>  
+                    </li>
+                    <li class="ms-3">
+                        <a href="{{ route('blog')}}"> Блог </a>  
+                    </li>
+                     
+                </ul>    
             </div>
                 
             <div>

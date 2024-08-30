@@ -9,7 +9,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        return 'вывод всех постов';
+        return view('user.index');
     }
 
     public function create()

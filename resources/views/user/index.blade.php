@@ -24,10 +24,10 @@
                 <td colspan="2"></td>
                 <td colspan="2"></td>
                 <td colspan="2">
-                    <a href="" class="href">view</a>
+                    <a href="" class="href">{{ $balance }}</a>
                 </td>
                 </tr>
-
+                
             </tbody>
             </table>
         </div>

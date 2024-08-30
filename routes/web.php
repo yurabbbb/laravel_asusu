@@ -27,7 +27,7 @@ Route::get('test', TestController::class)->name('test')->middleware(LogMiddlewar
 // CRUD 
 //Route::redirect('/user', '/user/posts')->name('user');  // со страницы юзер на страницу юзер/посты
 
-Route::prefix('user')->middleware(/*'auth', */'active')->group(function(){
+Route::prefix('user')->group(function(){           // -> middleware( 'auth', 'active' ) мидлвэр авторизован, активен
 
     Route::redirect('/', '/user/posts')->name('user');
         // метод GET                       //это метод (action)  //это название маршрута, можно писать ->name('posts')
