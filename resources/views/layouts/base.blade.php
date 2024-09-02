@@ -7,6 +7,9 @@
 
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .required:after {content:"*"; color:red; margin-left: 3px;}
+    </style>
 </head>
 <body>
 
@@ -23,7 +26,7 @@
     -->
 
  
-    <div class="d-flex flex-column min-vh-100 justify-content-between text-center">
+    <div class="d-flex flex-column min-vh-100 justify-content-between ">
         
         @include('includes.header')
 

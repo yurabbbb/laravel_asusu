@@ -12,7 +12,8 @@ use App\Http\Middleware\LogMiddleware;
 
 Route::get('/', function () {
     return view('home.index');
-});
+})->name('home.index');
+
 Route::redirect('/home', '/')->name('home');
 
 Route::get('users', [UserController::class, 'index'])->name('users.index');
