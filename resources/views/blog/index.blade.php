@@ -4,30 +4,36 @@
 
 
 @section('content')
-    <h2>Блог</h2>
-    <h3>Список постов</h3>
+    <section>
+        <x-container>
+            <x-title>
+                Список постов
+            </x-title>
+            @if(empty($posts))
+            Нет ни одного поста
+            @else   
+                <div class="row"> 
+                    @foreach($posts as $post)
+                        <div class="col-12 col-md-4">
+                            <div class="mb-4">
+                                <x-post.card :post="$post" />
+
+                            </div>    
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+        </x-container>
+    </section>
+
+    
     {{--
     <p>
         @json($posts)
     </p>
     --}}
     <div>
-        @if(empty($posts))
-            Нет ни одного поста
-        @else    
-            @foreach($posts as $post)
-           <div>
-                <h5>
-                    <a href="{{ route('blog.show' , $post->id) }}">
-                    {{ $post -> title }}
-                    </a>
-                </h5>
-                <p>
-                    {{ $post -> content }}
-                </p>
-           </div>
-            @endforeach
-        @endif
+        
 
         
     </div>

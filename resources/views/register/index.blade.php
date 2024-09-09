@@ -7,6 +7,9 @@
     <x-card>
         <x-card-header>
             <x-card-title>Регистрация</x-card-title>
+            <x-slot name="right"> 
+                <a href="{{ route('login')}}">Регистрация</a> 
+            </x-slot>
         </x-card-header>
 
         <x-card-body>
