@@ -11,7 +11,12 @@
 
         <x-card-body>
             <x-form action="{{ route('register.store') }}" method="POST">
-
+                {{-- 
+                    защита от csrf
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    или  {{ csrf_field() }} 
+                    или @csrf
+                --}}
                 <x-form-item>
                     <x-label required>Имя</x-label>
                         <x-input  name="name" autofocus />
